@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+* {
+    box-sizing: border-box;
+}
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.mat-typography {
+    h1, h2, h3, h4, h5, h6, p {
+        margin: 0;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+}
+
+// Page layout styles
+.app-container {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(./assets/images/home.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-container {
+    height: 80vh;
+    width: 700px;
+    border-radius: 16px;
+    padding: 32px 50px;
+    background-color: rgba(250, 230, 1, 0.12);
+    
+}
+
+// Form styles
+.form-title {
+    text-align: center;
+    font-size: 28px;
+}
+
+.form-label {
+    line-height: normal;
+    font-size: 18px;
+}
+
+// Dropdown styles
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 100%;
+}
+
+option {
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+option:checked {
+    background-color: #ccc;
+    color: #fff;
+}
+
+// Spacing style
+.ml-28 {
+    margin-left: 28px !important;
+}
+
+.mt-70 {
+    margin-top: 70px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
