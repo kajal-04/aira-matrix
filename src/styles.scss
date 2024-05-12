@@ -32,6 +32,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .page-container {
@@ -40,7 +41,6 @@ body {
     border-radius: 16px;
     padding: 32px 50px;
     background-color: rgba(250, 230, 1, 0.12);
-    
 }
 
 // Form styles
@@ -86,4 +86,13 @@ option:checked {
 
 .mt-30 {
     margin-top: 30px;
+}
+
+// Meadi quesries for responsive screen
+@media screen and (max-width: 755px) {
+    .page-container {
+        height: 90vh;
+        width: 100%;
+        padding: 30px;
+    }
 }

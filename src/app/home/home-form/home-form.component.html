@@ -1,43 +1,40 @@
-<div class="page-container">
-    <p class="form-title">Form To Update An Address</p>
-    <ng-container *ngIf="countryDetail?.length">
-        <form class="mt-70">
-            <div>
-                <p class="form-label ml-28">Please Enter the countryName</p>
-                <select [(ngModel)]="selectedCountryId" [ngModelOptions]="{standalone: true}" (change)="onCountrySelect()">
-                    <option value="">Select countryName</option>
-                    <ng-container *ngFor="let country of countryData">
-                        <option [value]="country.id">{{ country.name }}</option>
-                    </ng-container>
-                </select>
-            </div>
-            <div class="mt-30" *ngIf="stateDetail?.length">
-                <p class="form-label ml-28">Please Enter the statesName</p>
-                <select [(ngModel)]="selectedStateId" [ngModelOptions]="{standalone: true}" (change)="onStateSelect()">
-                    <option value="">Select stateName</option>
-                    <ng-container *ngFor="let state of stateDetail">
-                        <option [value]="state.id">{{ state.name }}</option>
-                    </ng-container>
-                </select>
-            </div>
-            <div class="mt-30" *ngIf="districtDetail?.length">
-                <p class="form-label ml-28">Please Enter the districtName</p>
-                <select [(ngModel)]="selectedDistrictId" [ngModelOptions]="{standalone: true}" (change)="onDistrictSelect()">
-                    <option value="">Select districtName</option>
-                    <ng-container *ngFor="let district of districtDetail">
-                        <option [value]="district.id">{{ district.name }}</option>
-                    </ng-container>
-                </select>
-            </div>
-            <div class="mt-30" *ngIf="placesDetail?.length">
-                <p class="form-label ml-28">Please Enter the placeName</p>
-                <select id="cars">
-                    <option value="">Select placeName</option>
-                    <ng-container *ngFor="let place of placesDetail">
-                        <option [value]="place.id">{{ place.name }}</option>
-                    </ng-container>
-                </select>
-            </div>
-       </form>
-    </ng-container>
-</div>
+<ng-container *ngIf="countryDetail?.length">
+    <form class="mt-70">
+        <div>
+            <p class="form-label ml-28">Please Enter the countryName</p>
+            <select [(ngModel)]="selectedCountryId" [ngModelOptions]="{standalone: true}" (change)="onCountrySelect()">
+                <option value="">Select countryName</option>
+                <ng-container *ngFor="let country of countryData">
+                    <option [value]="country.id">{{ country.name }}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="mt-30" *ngIf="stateDetail?.length">
+            <p class="form-label ml-28">Please Enter the statesName</p>
+            <select [(ngModel)]="selectedStateId" [ngModelOptions]="{standalone: true}" (change)="onStateSelect()">
+                <option value="">Select stateName</option>
+                <ng-container *ngFor="let state of stateDetail">
+                    <option [value]="state.id">{{ state.name }}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="mt-30" *ngIf="districtDetail?.length">
+            <p class="form-label ml-28">Please Enter the districtName</p>
+            <select [(ngModel)]="selectedDistrictId" [ngModelOptions]="{standalone: true}" (change)="onDistrictSelect()">
+                <option value="">Select districtName</option>
+                <ng-container *ngFor="let district of districtDetail">
+                    <option [value]="district.id">{{ district.name }}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="mt-30" *ngIf="placesDetail?.length">
+            <p class="form-label ml-28">Please Enter the placeName</p>
+            <select id="cars">
+                <option value="">Select placeName</option>
+                <ng-container *ngFor="let place of placesDetail">
+                    <option [value]="place.id">{{ place.name }}</option>
+                </ng-container>
+            </select>
+        </div>
+    </form>
+</ng-container>
