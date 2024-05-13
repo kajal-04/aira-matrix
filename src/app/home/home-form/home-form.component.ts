@@ -31,34 +31,12 @@ export class HomeFormComponent implements OnInit {
   constructor( private dataServices: DataService) {}
 
   ngOnInit() {
-    // Converted JSON data in Array format to iterate easily
     let placeDetails = this.dataServices.getDetail();
-    let placeDetailsObj = JSON.parse(placeDetails);
-    let detail = Object.keys(placeDetailsObj).map((key: string) => ({
-      id: placeDetailsObj[key].id,
-      name: placeDetailsObj[key].name,
-      states: placeDetailsObj[key].states.map((state: any) => ({
-        id: state.id,
-        parentId: state.parentId,
-        name: state.name,
-        districts: state.districts.map((district: any) => ({
-          id: district.id,
-          parentId: district.parentId,
-          name: district.name,
-          places: district.places.map((place: any) => ({
-            id: place.id,
-            parentId: place.parentId,
-            name: place.name
-          }))
-        }))
-      }))
-    }));
-
-    this.countryDetail = detail;
+    this.countryDetail =  JSON.parse(placeDetails);
   }
 
   onCountrySelect() {
-    let stateData = this.countryDetail.find(country => country.id === this.selectedCountryId);
+    let stateData = this.countryDetail[Number(this.selectedCountryId)];
     if(stateData) {
       this.stateDetail = stateData.states;
       this.districtDetail = [];

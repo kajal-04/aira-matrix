@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import  {HttpClient} from '@angular/common/http';
 
 import { Country, State, Place, District } from '../models';
 
@@ -49,33 +48,43 @@ export class DataService {
     { id: "p15", parentId: "d8", name: "New Chennai" },
     { id: "p16", parentId: "d8", name: "Old Chennai" }
   ];
+  private countryDetail: string | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  getDetail() {
+  private countryDetailCached() {
+    if (!this.countryDetail) {
+      this.countryDetail = this.countryDetailJsonFormat();
+    }
+  }
+
+  private countryDetailJsonFormat(): string {
     let result: any = {};
     
-    // Converted data in JSON format
     for (let country of this.firstLevelArr) {
-        let countryObj: Country = new Country(country.id, country.name, []);
+      let countryObj: Country = new Country(country.id, country.name, []);
     
-        for (let state of this.secondLevelArr.filter(s => s.parentId === country.id)) {
-            let stateObj: State = new State(state.id, state.parentId, state.name, []);
+      for (let state of this.secondLevelArr.filter(s => s.parentId === country.id)) {
+        let stateObj: State = new State(state.id, state.parentId, state.name, []);
     
-            for (let district of this.thirdLevelArr.filter(d => d.parentId === state.id)) {
-                let places: Place[] = this.fourthLevelArr
-                    .filter(p => p.parentId === district.id)
-                    .map(p => new Place(p.id, p.parentId, p.name));
+        for (let district of this.thirdLevelArr.filter(d => d.parentId === state.id)) {
+          let places: Place[] = this.fourthLevelArr
+            .filter(p => p.parentId === district.id)
+            .map(p => new Place(p.id, p.parentId, p.name));
                     
-                let districtObj: District = new District(district.id, district.parentId, district.name, places);
-                stateObj.districts.push(districtObj);
-            }
-            countryObj.states.push(stateObj);
+          let districtObj: District = new District(district.id, district.parentId, district.name, places);
+          stateObj.districts.push(districtObj);
         }
-        result[country.id] = countryObj;
+        countryObj.states.push(stateObj);
+      }
+      result[country.id] = countryObj;
     }
     
-    let detail = JSON.stringify(result, null, 2);
-    return detail;
+    return JSON.stringify(result, null, 2);
+  }
+
+  getDetail() {
+    this.countryDetailCached();
+    return this.countryDetail!;
   }
 }
