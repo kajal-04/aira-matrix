@@ -31,8 +31,7 @@ export class HomeFormComponent implements OnInit {
   constructor( private dataServices: DataService) {}
 
   ngOnInit() {
-    let placeDetails = this.dataServices.getDetail();
-    this.countryDetail =  JSON.parse(placeDetails);
+    this.countryDetail =  JSON.parse(this.dataServices.getDetail());
   }
 
   onCountrySelect() {
